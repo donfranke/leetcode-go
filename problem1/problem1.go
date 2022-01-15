@@ -1,22 +1,23 @@
+// https://leetcode.com/problems/concatenation-of-array/
+
 package main
 
 import "fmt"
 
 func main() {
-	var ary_nums = []int{-1, 0, 3, 5, 9, 12}
-	var iTarget = 9
+	var aryInput = []int{1, 2, 1}
+	var aryOutput []int
 
-	var i_result int
-	i_result = search(ary_nums, iTarget)
-	fmt.Println(i_result)
+	aryOutput = getConcatenation(aryInput)
+	for _, v := range aryOutput {
+		fmt.Println(v)
+	}
 }
 
-func search(nums []int, target int) int {
-	i := -1
-	for i = 0; i < len(nums); i++ {
-		if nums[i] == target {
-			return i
-		}
+func getConcatenation(nums []int) []int {
+	var ary = nums
+	for _, v := range ary {
+		ary = append(ary, v)
 	}
-	return -1
+	return ary
 }
