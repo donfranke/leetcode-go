@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/remove-duplicates-from-sorted-array/
 package main
 
 import "fmt"
@@ -26,12 +27,7 @@ func removeDuplicates(nums []int) int {
 }
 
 func main() {
-	//ary := []int{1, 1, 2}
-	//ary := []int{1, 2}
-	//ary := []int{1, 2, 3}
-	//ary := []int{1}
 	ary := []int{}
-	//ary := []int{0, 0, 1, 1, 1, 2, 2, 3, 3, 4}
-	k := removeDuplicates(ary) // Calls your implementation
+	k := removeDuplicates(ary)
 	fmt.Printf("Len: %d\n", k)
 }

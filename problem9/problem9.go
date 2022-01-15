@@ -1,3 +1,4 @@
+// https://leetcode.com/problems/implement-strstr/
 package main
 
 import "fmt"
@@ -18,7 +19,6 @@ func strStr(haystack string, needle string) int {
 				return i
 			}
 			for j := 0; j < len(needle); j++ {
-				//fmt.Printf("%d, %d, %s, %s\n", i, j, string(haystack[i+j]), string(needle[j]))
 				if (i+j > len(haystack)-1 || i == len(haystack)-1) && j > 0 {
 					return -1
 				}
