@@ -1,33 +1,35 @@
+// https://leetcode.com/problems/subrectangle-queries/
+
 package main
 
-import "fmt"
-
 type SubrectangleQueries struct {
-	row1 int
-	row2 int
-	col1 int
-	col2 int
+	rectangle [][]int
+	size      int
+	empty     bool
 }
 
 func Constructor(rectangle [][]int) SubrectangleQueries {
-	return SubrectangleQueries{}
+	size := len(rectangle)
+
+	return SubrectangleQueries{
+		rectangle: rectangle,
+		size:      size,
+		empty:     size <= 0,
+	}
 }
 
-func (this *SubrectangleQueries) UpdateSubrectangle(row1 int, col1 int, row2 int, col2 int, newValue int) {
+func (s SubrectangleQueries) UpdateSubrectangle(row1 int, col1 int, row2 int, col2 int, newValue int) {
 
 }
 
-func (this *SubrectangleQueries) GetValue(row int, col int) int {
+func (s SubrectangleQueries) GetValue(row int, col int) int {
 	return 0
 }
 
 func main() {
-	fmt.Print("Hello World")
-	s1 := SubrectangleQueries{}
-	s1.row1 = 1
-	s1.row2 = 2
-	s1.col1 = 3
-	s1.col2 = 4
+
+	// ["SubrectangleQueries","getValue","updateSubrectangle","getValue","getValue","updateSubrectangle","getValue","getValue"]
+	// [[[[1,2,1],[4,3,4],[3,2,1],[1,1,1]]],[0,2],[0,0,3,2,5],[0,2],[3,1],[3,0,3,2,10],[3,1],[0,2]]
 
 	//this.UpdateSubrectangle(1, 2, 3, 4)
 
