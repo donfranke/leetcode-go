@@ -23,24 +23,8 @@ var url_list []Codec
 func (this *Codec) encode(longUrl string) string {
 	// sample input: https://leetcode.com/problems/design-tinyurl
 	// sample return: http://tinyurl.com/4e9iAk
-	var ascii []string
 
 	retUrl := "http://tinyurl.com/"
-
-	// add numbers
-	for i := 48; i < 58; i++ {
-		ascii = append(ascii, fmt.Sprint(i))
-	}
-
-	// add lower case letters
-	for i := 65; i < 91; i++ {
-		ascii = append(ascii, fmt.Sprint(i))
-	}
-
-	// add upper case letters
-	for i := 97; i < 123; i++ {
-		ascii = append(ascii, fmt.Sprint(i))
-	}
 
 	a_count := 0
 	e_count := 0
