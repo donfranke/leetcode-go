@@ -40,9 +40,5 @@ func search(nums []int, target int) int {
 }
 
 func main() {
-	nums := []int{-1, 0, 3, 5, 9, 12}
-	target := 0
-	ret := search(nums, target)
-	fmt.Println(ret)
-
+	fmt.Println("Use 'go test' to run this module")
 }
