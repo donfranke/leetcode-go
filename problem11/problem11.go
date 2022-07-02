@@ -83,13 +83,6 @@ func (this *Codec) decode(shortUrl string) string {
 
 func main() {
 	fmt.Print("Use 'go test' to test this function\n")
-	longUrl := "https://leetcode.com/problems/design-tinyurl"
-
-	obj := Constructor()
-	url := obj.encode(longUrl)
-	ans := obj.decode(url)
-
-	fmt.Printf("URL: %s\n", ans)
 }
 
 /**

@@ -29,3 +29,16 @@ func Test2(a *testing.T) {
 		a.Errorf("Did not encode or decode correctly, result: %s\n", decodedUrl)
 	}
 }
+
+func Test3(a *testing.T) {
+	testUrl := "http://angle.example.com/"
+	expected := testUrl
+
+	obj := Constructor()
+	encodedUrl := obj.encode(testUrl)
+	decodedUrl := obj.decode(encodedUrl)
+
+	if decodedUrl != expected {
+		a.Errorf("Did not encode or decode correctly, result: %s\n", decodedUrl)
+	}
+}
