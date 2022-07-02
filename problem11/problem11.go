@@ -2,9 +2,13 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 type Codec struct {
+	url         string
+	encoded_url string
 }
 
 func Constructor() Codec {
@@ -12,22 +16,96 @@ func Constructor() Codec {
 	return c
 }
 
+// global list of encodes and urls
+var url_list []Codec
+
 // Encodes a URL to a shortened URL.
 func (this *Codec) encode(longUrl string) string {
 	// sample input: https://leetcode.com/problems/design-tinyurl
 	// sample return: http://tinyurl.com/4e9iAk
-	
+	var ascii []string
+
 	retUrl := "http://tinyurl.com/"
+
+	// add numbers
+	for i := 48; i < 58; i++ {
+		ascii = append(ascii, fmt.Sprint(i))
+	}
+
+	// add lower case letters
+	for i := 65; i < 91; i++ {
+		ascii = append(ascii, fmt.Sprint(i))
+	}
+
+	// add upper case letters
+	for i := 97; i < 123; i++ {
+		ascii = append(ascii, fmt.Sprint(i))
+	}
+
+	a_count := 0
+	e_count := 0
+	i_count := 0
+	o_count := 0
+	m_count := 0
+
+	for _, char := range longUrl {
+		if char == 'a' {
+			a_count++
+		}
+
+		if char == 'e' {
+			e_count++
+		}
+
+		if char == 'i' {
+			i_count++
+		}
+
+		if char == 'o' {
+			o_count++
+		}
+
+		if char == 'm' {
+			m_count++
+		}
+	}
+	retUrl += fmt.Sprintf("%da", a_count)
+	retUrl += fmt.Sprintf("%de", e_count)
+	retUrl += fmt.Sprintf("%di", i_count)
+	retUrl += fmt.Sprintf("%do", o_count)
+	retUrl += fmt.Sprintf("%dm", m_count)
+	retUrl += fmt.Sprintf("L%d", len(longUrl))
+	retUrl += fmt.Sprintf("S%s", longUrl[:1])
+	retUrl += fmt.Sprintf("E%s", longUrl[1:])
+
+	var c Codec
+	c.url = longUrl
+	c.encoded_url = retUrl
+
+	url_list = append(url_list, c)
+
 	return retUrl
 }
 
 // Decodes a shortened URL to its original URL.
 func (this *Codec) decode(shortUrl string) string {
-	return shortUrl
+	for i := 0; i < len(url_list); i++ {
+		if shortUrl == url_list[i].encoded_url {
+			return url_list[i].url
+		}
+	}
+	return "UNKNOWN"
 }
 
 func main() {
-	fmt.Print("Use 'go test' to test this function")
+	fmt.Print("Use 'go test' to test this function\n")
+	longUrl := "https://leetcode.com/problems/design-tinyurl"
+
+	obj := Constructor()
+	url := obj.encode(longUrl)
+	ans := obj.decode(url)
+
+	fmt.Printf("URL: %s\n", ans)
 }
 
 /**
